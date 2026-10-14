@@ -2,7 +2,7 @@
 
 Site vitrine d'Odymay, mobilier vintage rénové par Marie (Montauban). Les pièces sont exposées au tiers-lieu Le Génie, 12 rue du Génie.
 
-**État : maquette V1 du 14/10/2026.** Les éléments en orange sur la page sont à compléter avant la mise en ligne publique : coordonnées, horaires, places en atelier, mention TVA, mentions légales.
+**État : maquette V2 du 14/10/2026 (refonte graphique).** Les éléments en orange sur la page sont à compléter avant la mise en ligne publique : coordonnées, horaires, places en atelier, mention TVA, mentions légales.
 
 ## Contenu
 - `index.html` : page unique (pièces disponibles, atelier « Tapisser un tabouret », présentation, contact).

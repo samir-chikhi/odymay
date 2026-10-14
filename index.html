@@ -3,255 +3,351 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="description" content="Odymay, mobilier vintage rénové par Marie à Montauban. Pièces uniques exposées au tiers-lieu Le Génie et ateliers de tapisserie.">
+<meta name="description" content="Odymay, mobilier vintage rénové à la main par Marie à Montauban. Pièces uniques exposées au tiers-lieu Le Génie et ateliers de tapisserie.">
+<meta name="robots" content="noindex">
 <title>Odymay</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gloock&family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;1,400&display=swap">
 <style>
-/* Layout : vitrine d'atelier — mur clair, pièces alignées comme dans la salle du Génie, une bande damier comme seul motif */
+/* Catalogue de galerie : le losange du « O » d'Odymay est la seule figure ; tout le reste est photo, typographie, filets fins. */
 :root{
-  --wall:#EEF0EE;      /* mur du Génie */
-  --card:#FFFFFF;
-  --ink:#1D211E;
-  --muted:#5C635E;
-  --rule:#CDD3CE;
-  --green:#2B7A52;     /* vert des accoudoirs damier */
-  --terra:#B1512D;     /* bois laqué des chaises */
-  --check-a:#1D211E; --check-b:#FFFFFF;
-  --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
-  --f-body:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+  --paper:#F2F3EF;   /* mur clair du Génie */
+  --ink:#17201B;     /* noir vert */
+  --bottle:#1E3B2F;  /* vert bouteille, skaï des chaises */
+  --cobalt:#2446A6;  /* bouclette bleue de la chaise Pop Art */
+  --rule:#C8CDC5;
+  --muted:#5A635C;
+  --on-dark:#EEF0EA;
+  --on-dark-muted:#A9B7AE;
+  --f-display:"Gloock", "Bodoni 72", Didot, Georgia, serif;
+  --f-text:"Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --s-1:.8125rem; --s0:1rem; --s1:1.25rem; --s2:1.5625rem; --s3:1.953rem; --s4:2.441rem; --s5:3.815rem;
+  --gut:max(20px, env(safe-area-inset-left,0px));
+  --gutR:max(20px, env(safe-area-inset-right,0px));
+  color-scheme:light;
 }
-@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
-  --wall:#151816; --card:#1E2320; --ink:#ECEFEC; --muted:#A2AAA4; --rule:#343B36;
-  --green:#5DBB8A; --terra:#E0825C; --check-a:#ECEFEC; --check-b:#151816; color-scheme:dark } }
-:root[data-theme="dark"]{
-  --wall:#151816; --card:#1E2320; --ink:#ECEFEC; --muted:#A2AAA4; --rule:#343B36;
-  --green:#5DBB8A; --terra:#E0825C; --check-a:#ECEFEC; --check-b:#151816; color-scheme:dark }
-
 *{box-sizing:border-box}
-body{background:var(--wall);color:var(--ink);font:400 1rem/1.6 var(--f-body);margin:0}
-.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.1;text-wrap:balance;margin:0}
-h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
-h3{font-size:1.15rem;font-weight:500}
-p{margin:0;max-width:62ch}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 var(--s0)/1.65 var(--f-text);-webkit-font-smoothing:antialiased}
+img{max-width:100%;display:block}
 a{color:inherit}
-:focus-visible{outline:2px solid var(--green);outline-offset:3px}
-.label{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px}
+h1,h2,h3{font-family:var(--f-display);font-weight:400;margin:0;line-height:1.05;text-wrap:balance;letter-spacing:-.005em}
+p{margin:0}
+.wrap{max-width:1240px;margin:0 auto;padding-left:var(--gut);padding-right:var(--gutR)}
+.small{font-size:var(--s-1);color:var(--muted)}
+.todo{color:#A4471F}
 
-.draft{background:var(--ink);color:var(--wall);font-size:.85rem}
-.draft .wrap{padding-block:.5rem}
+/* bandeau maquette */
+.draft{background:var(--cobalt);color:#fff;font-size:var(--s-1)}
+.draft .wrap{padding-block:.45rem}
 
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-block:1.4rem}
-.mark{font-family:var(--f-display);font-weight:700;font-size:1.6rem;letter-spacing:.06em;display:inline-flex;align-items:center;text-decoration:none}
-.mark .o{width:.62em;height:.62em;border:.13em solid currentColor;transform:rotate(45deg);margin:0 .22em 0 .12em;display:inline-block}
-nav{display:flex;gap:1.4rem;flex-wrap:wrap;font-weight:500}
-nav a{text-decoration:none;border-bottom:1px solid transparent}
-nav a:hover{border-color:currentColor}
+/* en-tête */
+.top{position:absolute;inset:auto 0 auto 0;z-index:3;color:var(--on-dark)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.6rem;flex-wrap:wrap}
+.mark{display:inline-flex;align-items:center;text-decoration:none;font-family:var(--f-display);font-size:1.6rem;letter-spacing:.14em}
+.mark i{width:.56em;height:.56em;border:1.5px solid currentColor;transform:rotate(45deg);margin:0 .3em 0 .1em;display:inline-block}
+.top nav{display:flex;gap:1.75rem;flex-wrap:wrap}
+.top nav a{text-decoration:none;font-weight:500;padding-block:.2rem;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .25s}
+.top nav a:hover{background-size:100% 1px}
 
-.hero .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;padding-block:1rem 3rem}
-.hero h1{font-size:clamp(2.1rem,5.2vw,3.7rem)}
-.hero h1 em{font-style:normal;color:var(--terra)}
-.hero .txt{display:grid;gap:1.3rem;min-width:0}
-.hero .lead{font-size:1.12rem;color:var(--muted)}
-.hero img{width:100%;height:auto;display:block;border-radius:2px}
-.btn{display:inline-block;background:var(--green);color:#fff;text-decoration:none;font-weight:600;padding:.75rem 1.2rem;border-radius:2px;border:0;font:600 1rem var(--f-body);cursor:pointer}
-.btn:hover{filter:brightness(1.08)}
-.where{font-size:.95rem}
+/* ouverture */
+.hero{background:var(--bottle);color:var(--on-dark);position:relative;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding-block:clamp(7rem,12vw,9rem) clamp(4rem,8vw,6rem)}
+.hero h1{font-size:clamp(2.6rem,5.6vw,4.9rem);line-height:1.02}
+.hero .intro{display:grid;gap:2rem;min-width:0}
+.hero .lede{font-size:var(--s1);color:var(--on-dark-muted);max-width:34ch;line-height:1.55}
+.hero .where{display:flex;gap:2.5rem;flex-wrap:wrap;border-top:1px solid rgba(238,240,234,.22);padding-top:1.25rem}
+.hero .where div{display:grid;gap:.1rem}
+.hero .where span:first-child{font-size:var(--s-1);color:var(--on-dark-muted)}
+.cta{display:inline-flex;align-items:center;gap:.9rem;font-weight:600;text-decoration:none;color:var(--ink);background:var(--on-dark);padding:.95rem 1.4rem;width:max-content;max-width:100%}
+.cta i{width:.5em;height:.5em;border:1.5px solid currentColor;transform:rotate(45deg)}
+.cta:hover{background:#fff}
 
-.checker{height:14px;background:
-  conic-gradient(var(--check-a) 25%,var(--check-b) 0 50%,var(--check-a) 0 75%,var(--check-b) 0) 0 0/14px 14px;
-  border-block:1px solid var(--check-a)}
+/* le losange */
+.diamond{position:relative;width:min(100%,560px);aspect-ratio:1;justify-self:end}
+.diamond::before{content:"";position:absolute;inset:4%;border:1px solid rgba(238,240,234,.35);transform:rotate(45deg) translate(5%,5%)}
+.diamond img{width:100%;height:100%;object-fit:cover;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);animation:open 1.4s cubic-bezier(.2,.7,.1,1) both}
+@keyframes open{from{clip-path:polygon(50% 12%,88% 50%,50% 88%,12% 50%)}to{clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}}
 
-section{padding-block:4rem}
-.head{display:grid;gap:.6rem;margin-bottom:2rem}
+/* parole */
+.voice .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:clamp(2rem,6vw,6rem);padding-block:clamp(4.5rem,9vw,8rem)}
+.voice h2{font-size:var(--s1);font-family:var(--f-text);font-weight:600}
+.voice blockquote{margin:0;font-family:var(--f-display);font-size:clamp(1.75rem,3.4vw,2.9rem);line-height:1.15;max-width:22ch;text-wrap:balance}
+.voice .text{display:grid;gap:1.75rem;min-width:0}
+.voice p.body{max-width:58ch;color:var(--muted);font-size:var(--s1);line-height:1.6}
 
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
-.piece{background:var(--card);display:flex;flex-direction:column;min-width:0}
-.piece .ph{aspect-ratio:4/5;overflow:hidden;background:var(--rule);max-width:100%}
-.piece .ph img{width:100%;height:100%;object-fit:cover;display:block}
-.piece .ph.none{display:grid;place-items:center;color:var(--muted);font-size:.85rem}
-.piece .body{padding:1rem 1rem 1.1rem;display:grid;gap:.45rem;flex:1;grid-template-rows:auto 1fr auto}
-.piece p{font-size:.92rem;color:var(--muted)}
-.piece .foot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--rule);padding-top:.6rem;margin-top:.3rem}
-.price{font-family:var(--f-display);font-size:1.3rem;font-variant-numeric:tabular-nums}
-.state{font-size:.8rem;color:var(--green);font-weight:600}
-.note{font-size:.85rem;color:var(--muted);margin-top:1.2rem}
+/* catalogue */
+.cat{border-top:1px solid var(--rule)}
+.cat .wrap{padding-block:clamp(4rem,8vw,7rem)}
+.cat-head{display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.cat-head h2{font-size:clamp(2.4rem,5vw,4.2rem)}
+.cat-head p{max-width:38ch;color:var(--muted)}
+.lots{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:clamp(1rem,2.5vw,2.25rem);row-gap:clamp(3rem,6vw,5rem)}
+.lot{display:grid;gap:1rem;align-content:start;min-width:0}
+.lot figure{margin:0;overflow:hidden;background:#E3E6E0}
+.lot img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.1,1)}
+.lot:hover img{transform:scale(1.03)}
+.lot .meta{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:1rem;row-gap:.3rem;border-top:1px solid var(--ink);padding-top:.85rem}
+.lot h3{font-size:var(--s3)}
+.lot .price{font-family:var(--f-display);font-size:var(--s3);font-variant-numeric:tabular-nums;white-space:nowrap}
+.lot .desc{color:var(--muted);grid-column:1/-1;max-width:44ch}
+.lot .ref{grid-column:1/-1;font-size:var(--s-1);color:var(--muted);display:flex;gap:1.25rem}
+.lot .ref .ok{color:var(--bottle);font-weight:600}
+/* composition asymétrique */
+.l1{grid-column:1/8}  .l1 figure{aspect-ratio:1/1}
+.l2{grid-column:9/13;margin-top:clamp(4rem,12vw,11rem)} .l2 figure{aspect-ratio:3/5}
+.l3{grid-column:2/7}  .l3 figure{aspect-ratio:4/5}
+.l4{grid-column:8/13;margin-top:clamp(2rem,6vw,6rem)} .l4 figure{aspect-ratio:1/1}
+.l5{grid-column:1/6}  .l5 figure{aspect-ratio:7/8}
 
-.atelier .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:start}
-.atelier .txt{display:grid;gap:1rem;min-width:0}
-dl.spec{margin:0;background:var(--card);padding:1.4rem 1.5rem;display:grid;grid-template-columns:auto 1fr;gap:.75rem 1.5rem}
-dl.spec dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600;padding-top:.15rem}
-dl.spec dd{margin:0;font-weight:500}
-dl.spec dd.big{font-family:var(--f-display);font-size:1.5rem;font-variant-numeric:tabular-nums}
-ul.learn{margin:0;padding-left:1.1rem;display:grid;gap:.3rem}
+/* petits objets */
+.objets{grid-column:7/13;align-self:end;display:grid;gap:1.25rem}
+.objets h3{font-size:var(--s3)}
+.objets figure{margin:0;aspect-ratio:16/9;overflow:hidden;background:#E3E6E0}
+.objets figure img{width:100%;height:100%;object-fit:cover}
+.objets ul{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
+.objets li{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:1rem;padding-block:.85rem;border-bottom:1px solid var(--rule);align-items:baseline}
+.objets li b{font-weight:500}
+.objets li span{font-family:var(--f-display);font-size:var(--s1);font-variant-numeric:tabular-nums}
+.objets li small{display:block;color:var(--muted);font-size:var(--s-1)}
+.cat .note{margin-top:3rem;font-size:var(--s-1);color:var(--muted)}
 
-.moi .wrap{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:start}
-.moi .big-o{width:120px;height:120px;border:14px solid var(--terra);transform:rotate(45deg);margin:20px}
-.moi .txt{display:grid;gap:1rem;min-width:0}
-.moi blockquote{margin:0;font-family:var(--f-display);font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:500;line-height:1.3;max-width:34ch}
+/* atelier */
+.atelier{background:var(--ink);color:var(--on-dark)}
+.atelier .wrap{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:clamp(2.5rem,6vw,6rem);padding-block:clamp(4.5rem,9vw,8rem)}
+.atelier h2{font-size:clamp(2.4rem,5vw,4.2rem)}
+.atelier .intro{display:grid;gap:1.75rem;align-content:start;min-width:0}
+.atelier .intro > p{color:var(--on-dark-muted);font-size:var(--s1);max-width:40ch;line-height:1.55}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:0;counter-reset:s}
+.steps li{display:grid;grid-template-columns:3rem minmax(0,1fr);gap:1rem;padding-block:1.1rem;border-top:1px solid rgba(238,240,234,.18);counter-increment:s}
+.steps li::before{content:counter(s);font-family:var(--f-display);font-size:var(--s2);line-height:1}
+.steps li:last-child{border-bottom:1px solid rgba(238,240,234,.18)}
+.fiche{align-self:start;border:1px solid rgba(238,240,234,.25);padding:clamp(1.5rem,3vw,2.25rem);display:grid;gap:1.5rem}
+.fiche .p{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.fiche .p b{font-family:var(--f-display);font-weight:400;font-size:clamp(3rem,6vw,4.4rem);line-height:1;font-variant-numeric:tabular-nums}
+.fiche .p span{color:var(--on-dark-muted)}
+.fiche dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:.8rem 1.5rem}
+.fiche dt{color:var(--on-dark-muted);font-size:var(--s-1);padding-top:.2rem}
+.fiche dd{margin:0}
+.fiche .todo{color:#F0A27E}
+.btn{font:600 var(--s0) var(--f-text);display:inline-flex;align-items:center;justify-content:center;gap:.9rem;padding:.95rem 1.4rem;border:0;cursor:pointer;text-decoration:none;background:var(--on-dark);color:var(--ink)}
+.btn i{width:.5em;height:.5em;border:1.5px solid currentColor;transform:rotate(45deg)}
+.btn:hover{background:#fff}
 
-.contact .wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem}
-.contact .info{display:grid;gap:1.2rem;align-content:start;min-width:0}
-.contact .info div{display:grid;gap:.15rem}
-.todo{color:var(--terra);font-weight:500}
-form{background:var(--card);padding:1.5rem;display:grid;gap:1rem;min-width:0}
-label{display:grid;gap:.3rem;font-weight:500;font-size:.92rem}
-input,select,textarea{font:inherit;padding:.6rem .7rem;border:1px solid var(--rule);background:var(--wall);color:var(--ink);border-radius:2px;width:100%}
-textarea{min-height:110px;resize:vertical}
-.ok{font-size:.92rem;color:var(--green)}
+/* Marie */
+.marie .wrap{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.4fr);gap:clamp(2.5rem,7vw,7rem);padding-block:clamp(4.5rem,9vw,8rem);align-items:center}
+.marie .sign{position:relative;aspect-ratio:1;width:min(100%,380px);display:grid;place-items:center}
+.marie .sign::before{content:"";position:absolute;inset:14%;border:1px solid var(--ink);transform:rotate(45deg)}
+.marie .sign::after{content:"";position:absolute;inset:24%;background:var(--bottle);transform:rotate(45deg)}
+.marie .sign span{position:relative;z-index:1;color:var(--on-dark);font-family:var(--f-display);font-size:clamp(1.5rem,3vw,2.1rem);text-align:center;line-height:1.1}
+.marie .sign small{display:block;font-family:var(--f-text);font-size:var(--s-1);color:var(--on-dark-muted);margin-top:.4rem}
+.marie .text{display:grid;gap:1.4rem;min-width:0}
+.marie h2{font-size:clamp(2rem,4vw,3.2rem);max-width:18ch}
+.marie p{max-width:60ch;font-size:var(--s1);line-height:1.6;color:var(--muted)}
+.marie p.first{color:var(--ink)}
 
-footer{border-top:1px solid var(--rule)}
-footer .wrap{padding-block:2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+/* contact */
+.contact{border-top:1px solid var(--rule)}
+.contact .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(2.5rem,6vw,6rem);padding-block:clamp(4.5rem,9vw,7rem)}
+.contact h2{font-size:clamp(2.2rem,4.5vw,3.6rem);max-width:12ch}
+.contact .info{display:grid;gap:2rem;align-content:start;min-width:0}
+.contact dl{margin:0;display:grid;grid-template-columns:auto minmax(0,1fr);gap:.9rem 2rem;border-top:1px solid var(--ink);padding-top:1.25rem}
+.contact dt{color:var(--muted);font-size:var(--s-1);padding-top:.2rem}
+.contact dd{margin:0}
+form{display:grid;gap:1.4rem;min-width:0}
+.field{display:grid;gap:.35rem}
+.field label{font-size:var(--s-1);color:var(--muted)}
+input,select,textarea{font:inherit;color:var(--ink);background:transparent;border:0;border-bottom:1px solid var(--ink);padding:.55rem 0;border-radius:0;width:100%}
+select{appearance:none;background:linear-gradient(45deg,transparent 50%,var(--ink) 50%) calc(100% - 10px) 55%/6px 6px no-repeat,linear-gradient(-45deg,transparent 50%,var(--ink) 50%) calc(100% - 4px) 55%/6px 6px no-repeat}
+textarea{min-height:120px;resize:vertical}
+input:focus,select:focus,textarea:focus{outline:none;border-bottom:2px solid var(--cobalt)}
+form .btn{background:var(--ink);color:var(--paper);justify-self:start}
+form .btn:hover{background:var(--bottle)}
+.sent{color:var(--bottle);font-size:var(--s-1)}
+
+footer{background:var(--bottle);color:var(--on-dark-muted);font-size:var(--s-1)}
+footer .wrap{display:flex;justify-content:space-between;gap:1.5rem;flex-wrap:wrap;padding-block:2rem}
+footer .mark{color:var(--on-dark);font-size:1.1rem}
+footer .todo{color:#F0A27E}
 
 @media (max-width:900px){
-  .grid{grid-template-columns:repeat(2,1fr)}
-  .hero .wrap,.atelier .wrap,.contact .wrap{grid-template-columns:1fr}
+  .hero .wrap,.voice .wrap,.atelier .wrap,.marie .wrap,.contact .wrap{grid-template-columns:minmax(0,1fr)}
+  .diamond{justify-self:center;width:min(100%,460px)}
+  .lots{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .l1,.l2,.l3,.l4,.l5,.objets{grid-column:auto;margin-top:0}
+  .l1{grid-column:1/-1}
+  .objets{grid-column:1/-1}
+  .marie .sign{width:min(70%,300px);justify-self:center}
 }
-@media (max-width:520px){
-  .grid{grid-template-columns:1fr 1fr;gap:.75rem}
-  .piece .body{padding:.75rem}
-  .moi .wrap{grid-template-columns:1fr}
-  .moi .big-o{width:70px;height:70px;border-width:9px}
-  section{padding-block:3rem}
+@media (max-width:560px){
+  .lots{grid-template-columns:minmax(0,1fr)}
+  .l2 figure{aspect-ratio:4/5}
+  .top nav{gap:1.1rem;font-size:.95rem}
+  .hero .wrap{padding-top:8.5rem}
+  .lot h3,.lot .price{font-size:var(--s2)}
 }
-@media (max-width:380px){ .grid{grid-template-columns:1fr} }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .diamond img{animation:none}
+  .lot img{transition:none}
+}
 </style>
 </head>
 <body>
 
-<div class="draft"><div class="wrap">Maquette de travail du 14/10/2026. Les éléments en orange sont à compléter avec Marie avant la mise en ligne.</div></div>
+<div class="draft"><div class="wrap">Maquette du 14/10/2026, en cours de validation avec Marie. Les mentions en orange restent à compléter.</div></div>
 
-<header><div class="wrap">
-  <a class="mark" href="#top" aria-label="Odymay, accueil"><span class="o" aria-hidden="true"></span>DYMAY</a>
+<header class="top"><div class="wrap">
+  <a class="mark" href="#" aria-label="Odymay, retour en haut"><i aria-hidden="true"></i>DYMAY</a>
   <nav aria-label="Sections">
-    <a href="#pieces">Pièces</a><a href="#atelier">Atelier</a><a href="#moi">Qui suis-je</a><a href="#contact">Contact</a>
+    <a href="#collection">Collection</a><a href="#atelier">Atelier</a><a href="#marie">Marie</a><a href="#contact">Contact</a>
   </nav>
 </div></header>
 
-<main id="top">
-<div class="hero"><div class="wrap">
-  <div class="txt">
-    <span class="label">Mobilier vintage rénové · Montauban</span>
-    <h1>Des meubles vintage rénovés avec amour, pour une déco <em>à votre image</em>.</h1>
-    <p class="lead">Chaque pièce est chinée, restaurée puis retravaillée à la main : tissu, peinture, détail graphique. Des meubles uniques, contemporains et raffinés.</p>
-    <div><a class="btn" href="#pieces">Voir les pièces disponibles</a></div>
-    <p class="where">Pièces exposées au tiers-lieu Le Génie, 12 rue du Génie, Montauban.</p>
+<main>
+<section class="hero" aria-labelledby="t-hero"><div class="wrap">
+  <div class="intro">
+    <h1 id="t-hero">Des meubles vintage rénovés avec amour, pour une déco à votre image.</h1>
+    <p class="lede">Chaque pièce est chinée, restaurée puis retravaillée à la main. Contemporaine, unique et raffinée.</p>
+    <a class="cta" href="#collection"><i aria-hidden="true"></i>Voir la collection</a>
+    <div class="where">
+      <div><span>Exposition-vente</span><span>Tiers-lieu Le Génie</span></div>
+      <div><span>Adresse</span><span>12 rue du Génie, Montauban</span></div>
+    </div>
   </div>
-  <img src="img/salon.jpg" alt="Coin salon au Génie : quatre chaises à dossier fleuri, un fauteuil en rotin, un fauteuil en velours côtelé aux accoudoirs damier, une table ronde rouge et noire." width="1400" height="1050">
-</div></div>
-
-<div class="checker" role="presentation"></div>
-
-<section id="pieces"><div class="wrap">
-  <div class="head">
-    <span class="label">Disponibles au Génie</span>
-    <h2>Pièces uniques</h2>
-    <p>Chaque meuble est un exemplaire unique. Une pièce vous plaît ? Réservez-la et venez la voir au Génie.</p>
-  </div>
-  <div class="grid">
-    <article class="piece"><div class="ph"><img src="img/bureau.jpg" alt="Bureau vintage, plateau bois, caisson noir à chevrons bois, piètement métal noir" loading="lazy"></div>
-      <div class="body"><h3>Bureau</h3><p>Plateau bois, caisson noir à chevrons, piètement métal noir.</p>
-      <div class="foot"><span class="price">220 €</span><span class="state">Disponible</span></div></div></article>
-    <article class="piece"><div class="ph"><img src="img/fauteuil.jpg" alt="Fauteuil en velours côtelé marron, accoudoirs en damier vert et blanc" loading="lazy"></div>
-      <div class="body"><h3>Fauteuil velours</h3><p>Velours côtelé marron, accoudoirs damier vert et blanc, pieds compas.</p>
-      <div class="foot"><span class="price">250 €</span><span class="state">Disponible</span></div></div></article>
-    <article class="piece"><div class="ph"><img src="img/chaises.jpg" alt="Quatre chaises en bois laqué terracotta, dossiers en tissu fleuri, assises vert olive" loading="lazy"></div>
-      <div class="body"><h3>Lot de 4 chaises</h3><p>Bois laqué terracotta, dossiers en tissu fleuri, assises vert olive.</p>
-      <div class="foot"><span class="price">180 €</span><span class="state">Disponible</span></div></div></article>
-    <article class="piece"><div class="ph"><img src="img/fauteuil-rotin.jpg" alt="Fauteuil cabriolet en rotin avec galette rayée rose et verte" loading="lazy"></div>
-      <div class="body"><h3>Fauteuil rotin</h3><p>Fauteuil cabriolet en rotin, galette rayée rose et verte.</p>
-      <div class="foot"><span class="price">120 €</span><span class="state">Disponible</span></div></div></article>
-    <article class="piece"><div class="ph"><img src="img/chaise-pop-art.jpg" alt="Chaise à structure rouge, dossier bouclette bleue, assise zébrée" loading="lazy"></div>
-      <div class="body"><h3>Chaise Pop Art</h3><p>Structure rouge, dossier bouclette bleue, assise zébrée, barreau damier.</p>
-      <div class="foot"><span class="price">80 €</span><span class="state">Disponible</span></div></div></article>
-    <article class="piece"><div class="ph"><img src="img/boite.jpg" alt="Boîte au couvercle rose et damier, côtés à rayures noir et blanc" loading="lazy"></div>
-      <div class="body"><h3>Boîte damier</h3><p>Couvercle rose et damier, flancs rayés noir et blanc.</p>
-      <div class="foot"><span class="price">40 €</span><span class="state">Disponible</span></div></div></article>
-    <article class="piece"><div class="ph none">Photo à venir</div>
-      <div class="body"><h3>Porte-revues</h3><p class="todo">Description à compléter.</p>
-      <div class="foot"><span class="price">40 €</span><span class="state">Disponible</span></div></div></article>
-    <article class="piece"><div class="ph none">Photo à venir</div>
-      <div class="body"><h3>Corbeille à fruits ou vide-poche</h3><p class="todo">Description à compléter.</p>
-      <div class="foot"><span class="price">40 €</span><span class="state">Disponible</span></div></div></article>
-  </div>
-  <p class="note">Prix TTC. <span class="todo">Mention TVA à confirmer selon le statut de Marie.</span> Dimensions sur demande.</p>
-</div></section>
-
-<div class="checker" role="presentation"></div>
-
-<section id="atelier" class="atelier"><div class="wrap">
-  <div class="txt">
-    <span class="label">Atelier au tiers-lieu du Génie</span>
-    <h2>Tapisser un tabouret</h2>
-    <p>En une demi-journée, vous repartez avec votre tabouret style hairpin, tapissé de vos mains. Vous apprendrez à maîtriser :</p>
-    <ul class="learn">
-      <li>la découpe et le collage de la mousse ;</li>
-      <li>la pose, la tension et l'agrafage du tissu.</li>
-    </ul>
-    <p>Ouvert à tous, débutants ou initiés. Tout le matériel est fourni, tabouret compris. En partenariat avec Occitalien.</p>
-    <div><a class="btn" href="#contact" data-sujet="atelier">S'inscrire à un atelier</a></div>
-  </div>
-  <dl class="spec">
-    <dt>Prix</dt><dd class="big">98 €</dd>
-    <dt>Durée</dt><dd>3 h 30</dd>
-    <dt>Niveau</dt><dd>Débutant ou initié</dd>
-    <dt>Fourni</dt><dd>Tabouret, mousse, tissu, outils</dd>
-    <dt>Lieu</dt><dd>Le Génie, 12 rue du Génie, Montauban</dd>
-    <dt>Places</dt><dd class="todo">Minimum et maximum à confirmer</dd>
-    <dt>Dates</dt><dd class="todo">Prochaines dates à venir</dd>
-  </dl>
-</div></section>
-
-<section id="moi" class="moi" style="background:var(--card)"><div class="wrap">
-  <div class="big-o" aria-hidden="true"></div>
-  <div class="txt">
-    <span class="label">Qui suis-je</span>
-    <blockquote>J'aime les belles choses, les objets qui ont une histoire.</blockquote>
-    <p>Après plusieurs vies professionnelles, du commerce à la couture d'ameublement, je me consacre à ce que j'aime. Je chine et je transforme le mobilier en alliant la rigueur et la créativité.</p>
-    <p>Chaque meuble raconte une histoire différente. Je m'efforce de respecter l'esprit de l'objet tout en lui apportant une touche actuelle. Redonner vie à un meuble ancien, c'est allonger sa durée de vie au lieu d'en acheter un neuf.</p>
-    <p>Odymay est un clin d'œil à mon aventure calédonienne et aux belles énergies de la tribu de POE.</p>
-    <p class="label" style="text-transform:none;letter-spacing:0">Marie, créatrice d'Odymay</p>
+  <div class="diamond">
+    <img src="img/hero.jpg" alt="Le coin salon d'Odymay au Génie : chaises à dossier fleuri, fauteuil en rotin, fauteuil en velours côtelé aux accoudoirs en damier vert." width="1200" height="1080" fetchpriority="high">
   </div>
 </div></section>
 
-<section id="contact" class="contact"><div class="wrap">
+<section class="voice" aria-labelledby="t-voice"><div class="wrap">
+  <h2 id="t-voice">La démarche</h2>
+  <div class="text">
+    <blockquote>Chacun de ces meubles raconte une histoire différente.</blockquote>
+    <p class="body">Je m'efforce de respecter l'esprit de l'objet tout en lui apportant une touche actuelle. Donner une nouvelle vie à un meuble authentique, c'est allonger la vie d'un objet qui existe déjà, plutôt que d'en acheter un neuf.</p>
+  </div>
+</div></section>
+
+<section class="cat" id="collection" aria-labelledby="t-cat"><div class="wrap">
+  <div class="cat-head">
+    <h2 id="t-cat">La collection</h2>
+    <p>Des pièces uniques, visibles au Génie. Une pièce vous plaît ? Réservez-la, elle vous attend.</p>
+  </div>
+
+  <div class="lots">
+    <article class="lot l1">
+      <figure><img src="img/chaises.jpg" alt="Quatre chaises en bois laqué terracotta, dossiers en tissu fleuri, assises vert olive." loading="lazy" width="1020" height="1000"></figure>
+      <div class="meta"><h3>Quatre chaises fleuries</h3><span class="price">180 €</span>
+        <p class="desc">Bois laqué terracotta, dossiers en tissu fleuri, assises en skaï vert olive. Vendues ensemble.</p>
+        <p class="ref"><span>Réf. 01</span><span class="ok">Disponible</span></p></div>
+    </article>
+    <article class="lot l2">
+      <figure><img src="img/chaise-pop-art.jpg" alt="Chaise à structure rouge, dossier en bouclette bleue, assise zébrée, barreau en damier." loading="lazy" width="480" height="800"></figure>
+      <div class="meta"><h3>Chaise Pop Art</h3><span class="price">80 €</span>
+        <p class="desc">Structure rouge, dossier bouclette bleue, assise zébrée, barreau damier.</p>
+        <p class="ref"><span>Réf. 02</span><span class="ok">Disponible</span></p></div>
+    </article>
+    <article class="lot l3">
+      <figure><img src="img/bureau.jpg" alt="Bureau vintage au plateau bois, caisson noir orné de chevrons en bois, piètement métal noir." loading="lazy" width="550" height="700"></figure>
+      <div class="meta"><h3>Bureau à chevrons</h3><span class="price">220 €</span>
+        <p class="desc">Plateau bois, caisson peint en noir et orné de chevrons bois, piètement métal.</p>
+        <p class="ref"><span>Réf. 03</span><span class="ok">Disponible</span></p></div>
+    </article>
+    <article class="lot l4">
+      <figure><img src="img/fauteuil.jpg" alt="Fauteuil en velours côtelé marron, accoudoirs en damier vert et blanc." loading="lazy" width="385" height="400"></figure>
+      <div class="meta"><h3>Fauteuil velours</h3><span class="price">250 €</span>
+        <p class="desc">Velours côtelé marron, accoudoirs en damier vert et blanc, pieds compas.</p>
+        <p class="ref"><span>Réf. 04</span><span class="ok">Disponible</span></p></div>
+    </article>
+    <article class="lot l5">
+      <figure><img src="img/fauteuil-rotin.jpg" alt="Fauteuil cabriolet en rotin avec une galette rayée rose et verte." loading="lazy" width="410" height="470"></figure>
+      <div class="meta"><h3>Fauteuil rotin</h3><span class="price">120 €</span>
+        <p class="desc">Fauteuil cabriolet en rotin, galette rayée rose et verte.</p>
+        <p class="ref"><span>Réf. 05</span><span class="ok">Disponible</span></p></div>
+    </article>
+    <div class="objets">
+      <h3>Petits objets</h3>
+      <figure><img src="img/boite.jpg" alt="Boîte au couvercle rose et damier, côtés rayés noir et blanc." loading="lazy" width="345" height="200"></figure>
+      <ul>
+        <li><div><b>Boîte damier</b><small>Couvercle rose et damier, flancs rayés.</small></div><span>40 €</span></li>
+        <li><div><b>Porte-revues</b><small class="todo">Photo et description à venir.</small></div><span>40 €</span></li>
+        <li><div><b>Corbeille à fruits ou vide-poche</b><small class="todo">Photo et description à venir.</small></div><span>40 €</span></li>
+      </ul>
+    </div>
+  </div>
+  <p class="note">Prix TTC, <span class="todo">mention TVA à confirmer</span>. Dimensions communiquées sur demande.</p>
+</div></section>
+
+<section class="atelier" id="atelier" aria-labelledby="t-at"><div class="wrap">
+  <div class="intro">
+    <h2 id="t-at">Tapisser un tabouret</h2>
+    <p>Une demi-journée au Génie pour repartir avec votre tabouret style hairpin, tapissé de vos mains. Ouvert à tous, débutants ou initiés. En partenariat avec Occitalien.</p>
+    <ol class="steps">
+      <li><span>Découper et coller la mousse sur l'assise.</span></li>
+      <li><span>Poser le tissu, le tendre, puis l'agrafer.</span></li>
+    </ol>
+  </div>
+  <div class="fiche">
+    <div class="p"><b>98 €</b><span>par personne</span></div>
+    <dl>
+      <dt>Durée</dt><dd>3 h 30</dd>
+      <dt>Fourni</dt><dd>Le tabouret, la mousse, le tissu et les outils</dd>
+      <dt>Lieu</dt><dd>Le Génie, 12 rue du Génie, Montauban</dd>
+      <dt>Places</dt><dd class="todo">À confirmer</dd>
+      <dt>Dates</dt><dd class="todo">Prochaines dates à venir</dd>
+    </dl>
+    <a class="btn" href="#contact" data-sujet="atelier"><i aria-hidden="true"></i>S'inscrire</a>
+  </div>
+</div></section>
+
+<section class="marie" id="marie" aria-labelledby="t-marie"><div class="wrap">
+  <div class="sign" aria-hidden="true"><span>Marie<small>créatrice d'Odymay</small></span></div>
+  <div class="text">
+    <h2 id="t-marie">J'aime les belles choses, les objets qui ont une histoire.</h2>
+    <p class="first">Après mille vies professionnelles, du commerce à la couture d'ameublement, j'adore chiner et transformer le mobilier en alliant la rigueur et la créativité.</p>
+    <p>Odymay est un petit clin d'œil à mon aventure calédonienne, avec toutes les belles énergies de la tribu de POE.</p>
+  </div>
+</div></section>
+
+<section class="contact" id="contact" aria-labelledby="t-contact"><div class="wrap">
   <div class="info">
-    <span class="label">Contact</span>
-    <h2>Réserver une pièce ou un atelier</h2>
-    <div><span class="label">Voir les pièces</span><span>Le Génie, 12 rue du Génie, 82000 Montauban</span></div>
-    <div><span class="label">Horaires</span><span class="todo">À compléter (ou sur rendez-vous)</span></div>
-    <div><span class="label">Téléphone</span><span class="todo">À compléter</span></div>
-    <div><span class="label">E-mail</span><span class="todo">À compléter</span></div>
-    <div><span class="label">Retrait / livraison</span><span class="todo">À compléter</span></div>
+    <h2 id="t-contact">Réserver une pièce ou un atelier</h2>
+    <dl>
+      <dt>Voir les pièces</dt><dd>Le Génie, 12 rue du Génie, 82000 Montauban</dd>
+      <dt>Horaires</dt><dd class="todo">À compléter</dd>
+      <dt>Téléphone</dt><dd class="todo">À compléter</dd>
+      <dt>E-mail</dt><dd class="todo">À compléter</dd>
+      <dt>Retrait</dt><dd class="todo">Au Génie, livraison à préciser</dd>
+    </dl>
   </div>
   <form id="f" novalidate>
-    <label for="f-nom">Nom<input id="f-nom" name="nom" autocomplete="name" required></label>
-    <label for="f-contact">E-mail ou téléphone<input id="f-contact" name="contact" required></label>
-    <label for="f-sujet">Votre demande
+    <div class="field"><label for="f-nom">Votre nom</label><input id="f-nom" name="nom" autocomplete="name"></div>
+    <div class="field"><label for="f-contact">E-mail ou téléphone</label><input id="f-contact" name="contact"></div>
+    <div class="field"><label for="f-sujet">Votre demande</label>
       <select id="f-sujet" name="sujet">
         <option value="piece">Réserver une pièce</option>
-        <option value="atelier">S'inscrire à l'atelier tabouret</option>
+        <option value="atelier">M'inscrire à l'atelier tabouret</option>
         <option value="restauration">Faire transformer un de mes meubles</option>
         <option value="autre">Autre question</option>
-      </select></label>
-    <label for="f-msg">Message<textarea id="f-msg" name="message" placeholder="Ex. : je souhaite réserver le fauteuil velours, je passe samedi."></textarea></label>
-    <div><button class="btn" type="submit">Envoyer la demande</button></div>
-    <p class="ok" id="f-ok" hidden>Maquette : à la mise en ligne, ce formulaire enverra la demande à Marie (enregistrement dans un tableau et e-mail automatique).</p>
+      </select></div>
+    <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" placeholder="Par exemple : je souhaite réserver le fauteuil velours et passer le voir samedi."></textarea></div>
+    <button class="btn" type="submit"><i aria-hidden="true"></i>Envoyer la demande</button>
+    <p class="sent" id="f-ok" hidden>Demande prête. À la mise en ligne définitive, elle sera transmise directement à Marie.</p>
   </form>
 </div></section>
 </main>
 
 <footer><div class="wrap">
-  <span>Odymay · Mobilier vintage rénové · Montauban</span>
-  <span class="todo">Mentions légales et politique de confidentialité à compléter (SIRET, hébergeur, responsable de publication)</span>
+  <span class="mark"><i aria-hidden="true" style="width:.56em;height:.56em;border:1.5px solid currentColor;transform:rotate(45deg);margin:0 .3em 0 .1em;display:inline-block"></i>DYMAY</span>
+  <span>Mobilier vintage rénové à Montauban</span>
+  <span class="todo">Mentions légales et confidentialité à compléter</span>
 </div></footer>
 
 <script>
-document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('f-ok').hidden=false});
-document.querySelectorAll('[data-sujet]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('f-sujet').value=a.dataset.sujet}));
+document.getElementById('f').addEventListener('submit',function(e){e.preventDefault();document.getElementById('f-ok').hidden=false;});
+document.querySelectorAll('[data-sujet]').forEach(function(a){a.addEventListener('click',function(){document.getElementById('f-sujet').value=a.dataset.sujet;});});
 </script>
 </body>
 </html>
