@@ -69,6 +69,7 @@ section[id]{scroll-margin-top:84px}
 /* le losange */
 .diamond{position:relative;width:min(100%,560px);aspect-ratio:1;justify-self:end}
 .diamond::before{content:"";position:absolute;inset:4%;border:1px solid rgba(238,240,234,.35);transform:rotate(45deg) translate(5%,5%)}
+.diamond::after{content:"";position:absolute;left:6%;bottom:12%;width:7%;aspect-ratio:1;background:var(--cobalt);transform:rotate(45deg)}
 .diamond img{width:100%;height:100%;object-fit:cover;clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);animation:open 1.4s cubic-bezier(.2,.7,.1,1) both}
 @keyframes open{from{clip-path:polygon(50% 12%,88% 50%,50% 88%,12% 50%)}to{clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)}}
 
@@ -114,6 +115,56 @@ section[id]{scroll-margin-top:84px}
 .objets li span{font-family:var(--f-display);font-size:var(--s1);font-variant-numeric:tabular-nums}
 .objets li small{display:block;color:var(--muted);font-size:var(--s-1)}
 .cat .note{margin-top:3rem;font-size:var(--s-1);color:var(--muted)}
+
+
+/* eyebrow : numéro de section + losange */
+.eyebrow{display:flex;align-items:center;gap:.7rem;font-size:var(--s-1);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem}
+.eyebrow::before{content:"";width:.55em;height:.55em;border:1.5px solid currentColor;transform:rotate(45deg);flex:none}
+.on-dark .eyebrow,.atelier .eyebrow,.valeurs .eyebrow{color:var(--on-dark-muted)}
+
+/* matières */
+.matieres{border-top:1px solid var(--rule)}
+.matieres .wrap{padding-block:clamp(3rem,6vw,5rem)}
+.mat-head{display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem}
+.mat-head h2{font-size:clamp(1.9rem,3.6vw,2.9rem)}
+.mat-head p{max-width:38ch;color:var(--muted)}
+.mat{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:clamp(.6rem,1.4vw,1.25rem)}
+.mat li{display:grid;gap:.6rem;min-width:0}
+.mat img{aspect-ratio:1;width:100%;height:auto;object-fit:cover;transition:transform .6s cubic-bezier(.2,.7,.1,1)}
+.mat figure{margin:0;overflow:hidden;background:#E3E6E0}
+.mat li:hover img{transform:scale(1.06)}
+.mat span{font-size:var(--s-1);border-top:1px solid var(--ink);padding-top:.5rem;font-weight:500}
+
+/* valeurs */
+.valeurs{background:var(--bottle);color:var(--on-dark)}
+.valeurs .wrap{padding-block:clamp(3.5rem,7vw,6rem)}
+.valeurs h2{font-size:clamp(1.9rem,3.6vw,2.9rem);max-width:20ch;margin-bottom:clamp(2rem,4vw,3.5rem)}
+.vals{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:clamp(1.25rem,2.5vw,2.5rem)}
+.vals li{border-top:1px solid rgba(238,240,234,.28);padding-top:1.25rem;display:grid;gap:.75rem;align-content:start}
+.vals i{width:.8rem;height:.8rem;border:1.5px solid var(--on-dark);transform:rotate(45deg);margin:.2rem 0 .3rem .2rem}
+.vals li:nth-child(1) i{background:var(--on-dark)}
+.vals h3{font-size:var(--s2)}
+.vals p{color:var(--on-dark-muted);font-size:var(--s0);line-height:1.55}
+
+/* coulisses */
+.coulisses{background:#E8EAE4;border-top:1px solid var(--rule)}
+.coulisses .wrap{padding-block:clamp(4rem,8vw,7rem)}
+.coul-head{display:flex;justify-content:space-between;align-items:end;gap:1.5rem;flex-wrap:wrap;margin-bottom:clamp(2.5rem,5vw,4rem)}
+.coul-head h2{font-size:clamp(2.4rem,5vw,4.2rem);max-width:14ch}
+.coul-head p{max-width:38ch;color:var(--muted)}
+.coul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(1rem,2.5vw,2.25rem)}
+.coul li{display:grid;gap:1rem;align-content:start;min-width:0}
+.coul li:nth-child(2){margin-top:clamp(2rem,6vw,5rem)}
+.coul li:nth-child(3){margin-top:clamp(1rem,3vw,2.5rem)}
+.coul figure{margin:0;aspect-ratio:4/5;overflow:hidden;background:#D9DDD5}
+.coul img{width:100%;height:100%;object-fit:cover;transition:transform .8s cubic-bezier(.2,.7,.1,1)}
+.coul li:hover img{transform:scale(1.03)}
+.prog{display:flex;align-items:center;gap:.6rem;font-size:var(--s-1);color:var(--muted)}
+.prog b{display:flex;gap:.45rem}
+.prog b i{width:.5rem;height:.5rem;transform:rotate(45deg);border:1.5px solid var(--bottle);display:block}
+.prog b i.on{background:var(--bottle)}
+.coul h3{font-size:var(--s3);border-top:1px solid var(--ink);padding-top:.85rem}
+.coul p{color:var(--muted);max-width:34ch}
 
 /* atelier */
 .atelier{background:var(--ink);color:var(--on-dark)}
@@ -181,6 +232,11 @@ footer .todo{color:#F0A27E}
   .l1{grid-column:1/-1}
   .objets{grid-column:1/-1}
   .marie .sign{width:min(70%,300px);justify-self:center}
+  .mat{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .vals{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .coul{grid-template-columns:minmax(0,1fr)}
+  .coul li:nth-child(n){margin-top:0}
+  .coul figure{aspect-ratio:4/3}
 }
 @media (max-width:560px){
   .lots{grid-template-columns:minmax(0,1fr)}
@@ -191,11 +247,15 @@ footer .todo{color:#F0A27E}
   section[id]{scroll-margin-top:60px}
   .hero .wrap{padding-top:2.5rem}
   .lot h3,.lot .price{font-size:var(--s2)}
+  .mat{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:.75rem;margin-inline:calc(var(--gut) * -1);padding-inline:var(--gut);scroll-padding-inline:var(--gut);scrollbar-width:none}
+  .mat li{flex:0 0 34vw;scroll-snap-align:start}
+  .vals{grid-template-columns:minmax(0,1fr)}
+  .coul figure{aspect-ratio:1/1}
 }
 @media (prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
   .diamond img{animation:none}
-  .lot img{transition:none}
+  .lot img,.mat img,.coul img{transition:none}
 }
 </style>
 </head>
@@ -206,7 +266,7 @@ footer .todo{color:#F0A27E}
 <header class="top"><div class="wrap">
   <a class="mark" href="#" aria-label="Odymay, retour en haut"><i aria-hidden="true"></i>DYMAY</a>
   <nav aria-label="Sections">
-    <a href="#collection">Collection</a><a href="#atelier">Atelier</a><a href="#marie">Marie</a><a href="#contact">Contact</a>
+    <a href="#collection">Collection</a><a href="#coulisses">Coulisses</a><a href="#atelier">Atelier</a><a href="#marie">Marie</a><a href="#contact">Contact</a>
   </nav>
 </div></header>
 
@@ -226,17 +286,41 @@ footer .todo{color:#F0A27E}
   </div>
 </div></section>
 
-<section class="voice" aria-labelledby="t-voice"><div class="wrap">
-  <h2 id="t-voice">La démarche</h2>
+<section class="voice" aria-label="La démarche"><div class="wrap">
+  <div><p class="eyebrow">La démarche</p></div>
   <div class="text">
     <blockquote>Chacun de ces meubles raconte une histoire différente.</blockquote>
     <p class="body">Je m'efforce de respecter l'esprit de l'objet tout en lui apportant une touche actuelle. Donner une nouvelle vie à un meuble authentique, c'est allonger la vie d'un objet qui existe déjà, plutôt que d'en acheter un neuf.</p>
   </div>
 </div></section>
 
+<section class="matieres" aria-labelledby="t-mat"><div class="wrap">
+  <div class="mat-head"><div><p class="eyebrow">Les matières</p><h2 id="t-mat">Des tissus à toucher, des motifs à vivre.</h2></div><p>Bouclette, velours côtelé, rotin, damier : chaque matière est choisie pour la pièce qu'elle habille.</p></div>
+  <ul class="mat">
+    <li><figure><img src="img/m-bouclette.jpg" alt="Gros plan sur une bouclette bleue" loading="lazy" width="360" height="360"></figure><span>Bouclette</span></li>
+    <li><figure><img src="img/m-zebre.jpg" alt="Gros plan sur un tissu zébré noir et blanc" loading="lazy" width="360" height="360"></figure><span>Zèbre</span></li>
+    <li><figure><img src="img/m-damier.jpg" alt="Gros plan sur un damier vert et blanc" loading="lazy" width="240" height="240"></figure><span>Damier</span></li>
+    <li><figure><img src="img/m-velours.jpg" alt="Gros plan sur un velours côtelé marron" loading="lazy" width="360" height="360"></figure><span>Velours côtelé</span></li>
+    <li><figure><img src="img/m-rotin.jpg" alt="Gros plan sur du rotin tressé" loading="lazy" width="360" height="360"></figure><span>Rotin</span></li>
+    <li><figure><img src="img/m-fleuri.jpg" alt="Gros plan sur un tissu fleuri" loading="lazy" width="360" height="360"></figure><span>Fleuri</span></li>
+    <li><figure><img src="img/m-chevrons.jpg" alt="Gros plan sur des chevrons en bois" loading="lazy" width="360" height="360"></figure><span>Chevrons</span></li>
+  </ul>
+</div></section>
+
+<section class="valeurs" aria-labelledby="t-val"><div class="wrap">
+  <p class="eyebrow">Ce qui guide chaque pièce</p>
+  <h2 id="t-val">Quatre idées simples, appliquées meuble après meuble.</h2>
+  <ul class="vals">
+    <li><i aria-hidden="true"></i><h3>Travail bien fait</h3><p>Chaque pièce est poncée, retapissée et finie à la main.</p></li>
+    <li><i aria-hidden="true"></i><h3>Réemploi</h3><p>Des meubles chinés qui existent déjà : on prolonge leur vie plutôt que d'en acheter de neufs.</p></li>
+    <li><i aria-hidden="true"></i><h3>Esprit vintage</h3><p>On respecte la ligne d'origine et on y ajoute une touche actuelle.</p></li>
+    <li><i aria-hidden="true"></i><h3>Partage</h3><p>Les pièces s'exposent au Génie et l'atelier tabouret est ouvert à tous.</p></li>
+  </ul>
+</div></section>
+
 <section class="cat" id="collection" aria-labelledby="t-cat"><div class="wrap">
   <div class="cat-head">
-    <h2 id="t-cat">La collection</h2>
+    <div><p class="eyebrow">01 · Collection</p><h2 id="t-cat">La collection</h2></div>
     <p>Des pièces uniques, visibles au Génie. Une pièce vous plaît ? Réservez-la, elle vous attend.</p>
   </div>
 
@@ -284,8 +368,21 @@ footer .todo{color:#F0A27E}
   <p class="note">Prix TTC, <span class="todo">mention TVA à confirmer</span>. Dimensions communiquées sur demande.</p>
 </div></section>
 
+<section class="coulisses" id="coulisses" aria-labelledby="t-coul"><div class="wrap">
+  <div class="coul-head"><div><p class="eyebrow">02 · Les coulisses</p><h2 id="t-coul">Comment naît une pièce.</h2></div><p>Trois étapes, du meuble chiné à la pièce prête à vivre au Génie.</p></div>
+  <ol class="coul">
+    <li><figure><img src="img/coulisses-1.jpg" alt="Bureau vintage au plateau bois et vase gris, avec une chaise à dossier bleu derrière" loading="lazy" width="1177" height="840"></figure>
+      <p class="prog"><b aria-hidden="true"><i class="on"></i><i></i><i></i></b>Étape 1 sur 3</p><h3>Chiner et composer</h3><p>Objets, textures et couleurs se rencontrent pour imaginer la nouvelle pièce.</p></li>
+    <li><figure><img src="img/coulisses-2.jpg" alt="Chaise à structure rouge et assise zébrée à côté d'un bureau" loading="lazy" width="656" height="1024"></figure>
+      <p class="prog"><b aria-hidden="true"><i class="on"></i><i class="on"></i><i></i></b>Étape 2 sur 3</p><h3>Transformer</h3><p>Ponçage, peinture, tissu : le meuble se réinvente, sans perdre son caractère.</p></li>
+    <li><figure><img src="img/coulisses-3.jpg" alt="Fauteuil en rotin à galette rayée et fauteuil en velours aux accoudoirs damier" loading="lazy" width="1200" height="847"></figure>
+      <p class="prog"><b aria-hidden="true"><i class="on"></i><i class="on"></i><i class="on"></i></b>Étape 3 sur 3</p><h3>Soigner les finitions</h3><p>Le geste, la matière et la couleur donnent une nouvelle histoire à l'objet.</p></li>
+  </ol>
+</div></section>
+
 <section class="atelier" id="atelier" aria-labelledby="t-at"><div class="wrap">
   <div class="intro">
+    <p class="eyebrow">03 · Atelier</p>
     <h2 id="t-at">Tapisser un tabouret</h2>
     <p>Une demi-journée au Génie pour repartir avec votre tabouret style hairpin, tapissé de vos mains. Ouvert à tous, débutants ou initiés. En partenariat avec Occitalien.</p>
     <ol class="steps">
@@ -309,6 +406,7 @@ footer .todo{color:#F0A27E}
 <section class="marie" id="marie" aria-labelledby="t-marie"><div class="wrap">
   <div class="sign" aria-hidden="true"><span>Marie<small>créatrice d'Odymay</small></span></div>
   <div class="text">
+    <p class="eyebrow">04 · Odymay</p>
     <h2 id="t-marie">J'aime les belles choses, les objets qui ont une histoire.</h2>
     <p class="first">Après mille vies professionnelles, du commerce à la couture d'ameublement, j'adore chiner et transformer le mobilier en alliant la rigueur et la créativité.</p>
     <p>Odymay est un petit clin d'œil à mon aventure calédonienne, avec toutes les belles énergies de la tribu de POE.</p>
@@ -317,6 +415,7 @@ footer .todo{color:#F0A27E}
 
 <section class="contact" id="contact" aria-labelledby="t-contact"><div class="wrap">
   <div class="info">
+    <p class="eyebrow">05 · Contact</p>
     <h2 id="t-contact">Réserver une pièce ou un atelier</h2>
     <dl>
       <dt>Voir les pièces</dt><dd>Le Génie, 12 rue du Génie, 82000 Montauban</dd>
