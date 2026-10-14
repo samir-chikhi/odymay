@@ -44,8 +44,9 @@ p{margin:0}
 .draft .wrap{padding-block:.45rem}
 
 /* en-tête */
-.top{position:absolute;inset:auto 0 auto 0;z-index:3;color:var(--on-dark)}
-.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.6rem;flex-wrap:wrap}
+.top{position:sticky;top:0;z-index:10;color:var(--on-dark);background:var(--bottle);border-bottom:1px solid rgba(238,240,234,.14);padding-top:env(safe-area-inset-top,0px)}
+section[id]{scroll-margin-top:84px}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding-block:1.1rem}
 .mark{display:inline-flex;align-items:center;text-decoration:none;font-family:var(--f-display);font-size:1.6rem;letter-spacing:.14em}
 .mark i{width:.56em;height:.56em;border:1.5px solid currentColor;transform:rotate(45deg);margin:0 .3em 0 .1em;display:inline-block}
 .top nav{display:flex;gap:1.75rem;flex-wrap:wrap}
@@ -54,7 +55,7 @@ p{margin:0}
 
 /* ouverture */
 .hero{background:var(--bottle);color:var(--on-dark);position:relative;overflow:hidden}
-.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding-block:clamp(7rem,12vw,9rem) clamp(4rem,8vw,6rem)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(2rem,5vw,5rem);align-items:center;padding-block:clamp(3rem,7vw,5.5rem) clamp(4rem,8vw,6rem)}
 .hero h1{font-size:clamp(2.6rem,5.6vw,4.9rem);line-height:1.02}
 .hero .intro{display:grid;gap:2rem;min-width:0}
 .hero .lede{font-size:var(--s1);color:var(--on-dark-muted);max-width:34ch;line-height:1.55}
@@ -184,8 +185,11 @@ footer .todo{color:#F0A27E}
 @media (max-width:560px){
   .lots{grid-template-columns:minmax(0,1fr)}
   .l2 figure{aspect-ratio:4/5}
-  .top nav{gap:1.1rem;font-size:.95rem}
-  .hero .wrap{padding-top:8.5rem}
+  .top .wrap{padding-block:.85rem}
+  .top .mark{font-size:1.05rem;letter-spacing:.1em;flex:none}
+  .top nav{gap:.75rem;font-size:.84rem;flex-wrap:nowrap;white-space:nowrap;overflow-x:auto;min-width:0;scrollbar-width:none}
+  section[id]{scroll-margin-top:60px}
+  .hero .wrap{padding-top:2.5rem}
   .lot h3,.lot .price{font-size:var(--s2)}
 }
 @media (prefers-reduced-motion:reduce){
