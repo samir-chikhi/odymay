@@ -1,0 +1,257 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="description" content="Odymay, mobilier vintage rénové par Marie à Montauban. Pièces uniques exposées au tiers-lieu Le Génie et ateliers de tapisserie.">
+<title>Odymay</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout : vitrine d'atelier — mur clair, pièces alignées comme dans la salle du Génie, une bande damier comme seul motif */
+:root{
+  --wall:#EEF0EE;      /* mur du Génie */
+  --card:#FFFFFF;
+  --ink:#1D211E;
+  --muted:#5C635E;
+  --rule:#CDD3CE;
+  --green:#2B7A52;     /* vert des accoudoirs damier */
+  --terra:#B1512D;     /* bois laqué des chaises */
+  --check-a:#1D211E; --check-b:#FFFFFF;
+  --f-display:"Bricolage Grotesque", "Avenir Next", "Segoe UI", sans-serif;
+  --f-body:"Instrument Sans", "Helvetica Neue", Arial, sans-serif;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --wall:#151816; --card:#1E2320; --ink:#ECEFEC; --muted:#A2AAA4; --rule:#343B36;
+  --green:#5DBB8A; --terra:#E0825C; --check-a:#ECEFEC; --check-b:#151816; color-scheme:dark } }
+:root[data-theme="dark"]{
+  --wall:#151816; --card:#1E2320; --ink:#ECEFEC; --muted:#A2AAA4; --rule:#343B36;
+  --green:#5DBB8A; --terra:#E0825C; --check-a:#ECEFEC; --check-b:#151816; color-scheme:dark }
+
+*{box-sizing:border-box}
+body{background:var(--wall);color:var(--ink);font:400 1rem/1.6 var(--f-body);margin:0}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-weight:700;line-height:1.1;text-wrap:balance;margin:0}
+h2{font-size:clamp(1.6rem,3.4vw,2.3rem)}
+h3{font-size:1.15rem;font-weight:500}
+p{margin:0;max-width:62ch}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--green);outline-offset:3px}
+.label{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600}
+
+.draft{background:var(--ink);color:var(--wall);font-size:.85rem}
+.draft .wrap{padding-block:.5rem}
+
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;padding-block:1.4rem}
+.mark{font-family:var(--f-display);font-weight:700;font-size:1.6rem;letter-spacing:.06em;display:inline-flex;align-items:center;text-decoration:none}
+.mark .o{width:.62em;height:.62em;border:.13em solid currentColor;transform:rotate(45deg);margin:0 .22em 0 .12em;display:inline-block}
+nav{display:flex;gap:1.4rem;flex-wrap:wrap;font-weight:500}
+nav a{text-decoration:none;border-bottom:1px solid transparent}
+nav a:hover{border-color:currentColor}
+
+.hero .wrap{display:grid;grid-template-columns:1fr 1.15fr;gap:clamp(1.5rem,4vw,3.5rem);align-items:center;padding-block:1rem 3rem}
+.hero h1{font-size:clamp(2.1rem,5.2vw,3.7rem)}
+.hero h1 em{font-style:normal;color:var(--terra)}
+.hero .txt{display:grid;gap:1.3rem;min-width:0}
+.hero .lead{font-size:1.12rem;color:var(--muted)}
+.hero img{width:100%;height:auto;display:block;border-radius:2px}
+.btn{display:inline-block;background:var(--green);color:#fff;text-decoration:none;font-weight:600;padding:.75rem 1.2rem;border-radius:2px;border:0;font:600 1rem var(--f-body);cursor:pointer}
+.btn:hover{filter:brightness(1.08)}
+.where{font-size:.95rem}
+
+.checker{height:14px;background:
+  conic-gradient(var(--check-a) 25%,var(--check-b) 0 50%,var(--check-a) 0 75%,var(--check-b) 0) 0 0/14px 14px;
+  border-block:1px solid var(--check-a)}
+
+section{padding-block:4rem}
+.head{display:grid;gap:.6rem;margin-bottom:2rem}
+
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem}
+.piece{background:var(--card);display:flex;flex-direction:column;min-width:0}
+.piece .ph{aspect-ratio:4/5;overflow:hidden;background:var(--rule);max-width:100%}
+.piece .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.piece .ph.none{display:grid;place-items:center;color:var(--muted);font-size:.85rem}
+.piece .body{padding:1rem 1rem 1.1rem;display:grid;gap:.45rem;flex:1;grid-template-rows:auto 1fr auto}
+.piece p{font-size:.92rem;color:var(--muted)}
+.piece .foot{display:flex;justify-content:space-between;align-items:baseline;border-top:1px solid var(--rule);padding-top:.6rem;margin-top:.3rem}
+.price{font-family:var(--f-display);font-size:1.3rem;font-variant-numeric:tabular-nums}
+.state{font-size:.8rem;color:var(--green);font-weight:600}
+.note{font-size:.85rem;color:var(--muted);margin-top:1.2rem}
+
+.atelier .wrap{display:grid;grid-template-columns:1.1fr 1fr;gap:3rem;align-items:start}
+.atelier .txt{display:grid;gap:1rem;min-width:0}
+dl.spec{margin:0;background:var(--card);padding:1.4rem 1.5rem;display:grid;grid-template-columns:auto 1fr;gap:.75rem 1.5rem}
+dl.spec dt{font-size:.75rem;text-transform:uppercase;letter-spacing:.09em;color:var(--muted);font-weight:600;padding-top:.15rem}
+dl.spec dd{margin:0;font-weight:500}
+dl.spec dd.big{font-family:var(--f-display);font-size:1.5rem;font-variant-numeric:tabular-nums}
+ul.learn{margin:0;padding-left:1.1rem;display:grid;gap:.3rem}
+
+.moi .wrap{display:grid;grid-template-columns:auto 1fr;gap:2.5rem;align-items:start}
+.moi .big-o{width:120px;height:120px;border:14px solid var(--terra);transform:rotate(45deg);margin:20px}
+.moi .txt{display:grid;gap:1rem;min-width:0}
+.moi blockquote{margin:0;font-family:var(--f-display);font-size:clamp(1.3rem,2.6vw,1.75rem);font-weight:500;line-height:1.3;max-width:34ch}
+
+.contact .wrap{display:grid;grid-template-columns:1fr 1.2fr;gap:3rem}
+.contact .info{display:grid;gap:1.2rem;align-content:start;min-width:0}
+.contact .info div{display:grid;gap:.15rem}
+.todo{color:var(--terra);font-weight:500}
+form{background:var(--card);padding:1.5rem;display:grid;gap:1rem;min-width:0}
+label{display:grid;gap:.3rem;font-weight:500;font-size:.92rem}
+input,select,textarea{font:inherit;padding:.6rem .7rem;border:1px solid var(--rule);background:var(--wall);color:var(--ink);border-radius:2px;width:100%}
+textarea{min-height:110px;resize:vertical}
+.ok{font-size:.92rem;color:var(--green)}
+
+footer{border-top:1px solid var(--rule)}
+footer .wrap{padding-block:2rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.85rem;color:var(--muted)}
+
+@media (max-width:900px){
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .hero .wrap,.atelier .wrap,.contact .wrap{grid-template-columns:1fr}
+}
+@media (max-width:520px){
+  .grid{grid-template-columns:1fr 1fr;gap:.75rem}
+  .piece .body{padding:.75rem}
+  .moi .wrap{grid-template-columns:1fr}
+  .moi .big-o{width:70px;height:70px;border-width:9px}
+  section{padding-block:3rem}
+}
+@media (max-width:380px){ .grid{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<div class="draft"><div class="wrap">Maquette de travail du 14/10/2026. Les éléments en orange sont à compléter avec Marie avant la mise en ligne.</div></div>
+
+<header><div class="wrap">
+  <a class="mark" href="#top" aria-label="Odymay, accueil"><span class="o" aria-hidden="true"></span>DYMAY</a>
+  <nav aria-label="Sections">
+    <a href="#pieces">Pièces</a><a href="#atelier">Atelier</a><a href="#moi">Qui suis-je</a><a href="#contact">Contact</a>
+  </nav>
+</div></header>
+
+<main id="top">
+<div class="hero"><div class="wrap">
+  <div class="txt">
+    <span class="label">Mobilier vintage rénové · Montauban</span>
+    <h1>Des meubles vintage rénovés avec amour, pour une déco <em>à votre image</em>.</h1>
+    <p class="lead">Chaque pièce est chinée, restaurée puis retravaillée à la main : tissu, peinture, détail graphique. Des meubles uniques, contemporains et raffinés.</p>
+    <div><a class="btn" href="#pieces">Voir les pièces disponibles</a></div>
+    <p class="where">Pièces exposées au tiers-lieu Le Génie, 12 rue du Génie, Montauban.</p>
+  </div>
+  <img src="img/salon.jpg" alt="Coin salon au Génie : quatre chaises à dossier fleuri, un fauteuil en rotin, un fauteuil en velours côtelé aux accoudoirs damier, une table ronde rouge et noire." width="1400" height="1050">
+</div></div>
+
+<div class="checker" role="presentation"></div>
+
+<section id="pieces"><div class="wrap">
+  <div class="head">
+    <span class="label">Disponibles au Génie</span>
+    <h2>Pièces uniques</h2>
+    <p>Chaque meuble est un exemplaire unique. Une pièce vous plaît ? Réservez-la et venez la voir au Génie.</p>
+  </div>
+  <div class="grid">
+    <article class="piece"><div class="ph"><img src="img/bureau.jpg" alt="Bureau vintage, plateau bois, caisson noir à chevrons bois, piètement métal noir" loading="lazy"></div>
+      <div class="body"><h3>Bureau</h3><p>Plateau bois, caisson noir à chevrons, piètement métal noir.</p>
+      <div class="foot"><span class="price">220 €</span><span class="state">Disponible</span></div></div></article>
+    <article class="piece"><div class="ph"><img src="img/fauteuil.jpg" alt="Fauteuil en velours côtelé marron, accoudoirs en damier vert et blanc" loading="lazy"></div>
+      <div class="body"><h3>Fauteuil velours</h3><p>Velours côtelé marron, accoudoirs damier vert et blanc, pieds compas.</p>
+      <div class="foot"><span class="price">250 €</span><span class="state">Disponible</span></div></div></article>
+    <article class="piece"><div class="ph"><img src="img/chaises.jpg" alt="Quatre chaises en bois laqué terracotta, dossiers en tissu fleuri, assises vert olive" loading="lazy"></div>
+      <div class="body"><h3>Lot de 4 chaises</h3><p>Bois laqué terracotta, dossiers en tissu fleuri, assises vert olive.</p>
+      <div class="foot"><span class="price">180 €</span><span class="state">Disponible</span></div></div></article>
+    <article class="piece"><div class="ph"><img src="img/fauteuil-rotin.jpg" alt="Fauteuil cabriolet en rotin avec galette rayée rose et verte" loading="lazy"></div>
+      <div class="body"><h3>Fauteuil rotin</h3><p>Fauteuil cabriolet en rotin, galette rayée rose et verte.</p>
+      <div class="foot"><span class="price">120 €</span><span class="state">Disponible</span></div></div></article>
+    <article class="piece"><div class="ph"><img src="img/chaise-pop-art.jpg" alt="Chaise à structure rouge, dossier bouclette bleue, assise zébrée" loading="lazy"></div>
+      <div class="body"><h3>Chaise Pop Art</h3><p>Structure rouge, dossier bouclette bleue, assise zébrée, barreau damier.</p>
+      <div class="foot"><span class="price">80 €</span><span class="state">Disponible</span></div></div></article>
+    <article class="piece"><div class="ph"><img src="img/boite.jpg" alt="Boîte au couvercle rose et damier, côtés à rayures noir et blanc" loading="lazy"></div>
+      <div class="body"><h3>Boîte damier</h3><p>Couvercle rose et damier, flancs rayés noir et blanc.</p>
+      <div class="foot"><span class="price">40 €</span><span class="state">Disponible</span></div></div></article>
+    <article class="piece"><div class="ph none">Photo à venir</div>
+      <div class="body"><h3>Porte-revues</h3><p class="todo">Description à compléter.</p>
+      <div class="foot"><span class="price">40 €</span><span class="state">Disponible</span></div></div></article>
+    <article class="piece"><div class="ph none">Photo à venir</div>
+      <div class="body"><h3>Corbeille à fruits ou vide-poche</h3><p class="todo">Description à compléter.</p>
+      <div class="foot"><span class="price">40 €</span><span class="state">Disponible</span></div></div></article>
+  </div>
+  <p class="note">Prix TTC. <span class="todo">Mention TVA à confirmer selon le statut de Marie.</span> Dimensions sur demande.</p>
+</div></section>
+
+<div class="checker" role="presentation"></div>
+
+<section id="atelier" class="atelier"><div class="wrap">
+  <div class="txt">
+    <span class="label">Atelier au tiers-lieu du Génie</span>
+    <h2>Tapisser un tabouret</h2>
+    <p>En une demi-journée, vous repartez avec votre tabouret style hairpin, tapissé de vos mains. Vous apprendrez à maîtriser :</p>
+    <ul class="learn">
+      <li>la découpe et le collage de la mousse ;</li>
+      <li>la pose, la tension et l'agrafage du tissu.</li>
+    </ul>
+    <p>Ouvert à tous, débutants ou initiés. Tout le matériel est fourni, tabouret compris. En partenariat avec Occitalien.</p>
+    <div><a class="btn" href="#contact" data-sujet="atelier">S'inscrire à un atelier</a></div>
+  </div>
+  <dl class="spec">
+    <dt>Prix</dt><dd class="big">98 €</dd>
+    <dt>Durée</dt><dd>3 h 30</dd>
+    <dt>Niveau</dt><dd>Débutant ou initié</dd>
+    <dt>Fourni</dt><dd>Tabouret, mousse, tissu, outils</dd>
+    <dt>Lieu</dt><dd>Le Génie, 12 rue du Génie, Montauban</dd>
+    <dt>Places</dt><dd class="todo">Minimum et maximum à confirmer</dd>
+    <dt>Dates</dt><dd class="todo">Prochaines dates à venir</dd>
+  </dl>
+</div></section>
+
+<section id="moi" class="moi" style="background:var(--card)"><div class="wrap">
+  <div class="big-o" aria-hidden="true"></div>
+  <div class="txt">
+    <span class="label">Qui suis-je</span>
+    <blockquote>J'aime les belles choses, les objets qui ont une histoire.</blockquote>
+    <p>Après plusieurs vies professionnelles, du commerce à la couture d'ameublement, je me consacre à ce que j'aime. Je chine et je transforme le mobilier en alliant la rigueur et la créativité.</p>
+    <p>Chaque meuble raconte une histoire différente. Je m'efforce de respecter l'esprit de l'objet tout en lui apportant une touche actuelle. Redonner vie à un meuble ancien, c'est allonger sa durée de vie au lieu d'en acheter un neuf.</p>
+    <p>Odymay est un clin d'œil à mon aventure calédonienne et aux belles énergies de la tribu de POE.</p>
+    <p class="label" style="text-transform:none;letter-spacing:0">Marie, créatrice d'Odymay</p>
+  </div>
+</div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+  <div class="info">
+    <span class="label">Contact</span>
+    <h2>Réserver une pièce ou un atelier</h2>
+    <div><span class="label">Voir les pièces</span><span>Le Génie, 12 rue du Génie, 82000 Montauban</span></div>
+    <div><span class="label">Horaires</span><span class="todo">À compléter (ou sur rendez-vous)</span></div>
+    <div><span class="label">Téléphone</span><span class="todo">À compléter</span></div>
+    <div><span class="label">E-mail</span><span class="todo">À compléter</span></div>
+    <div><span class="label">Retrait / livraison</span><span class="todo">À compléter</span></div>
+  </div>
+  <form id="f" novalidate>
+    <label for="f-nom">Nom<input id="f-nom" name="nom" autocomplete="name" required></label>
+    <label for="f-contact">E-mail ou téléphone<input id="f-contact" name="contact" required></label>
+    <label for="f-sujet">Votre demande
+      <select id="f-sujet" name="sujet">
+        <option value="piece">Réserver une pièce</option>
+        <option value="atelier">S'inscrire à l'atelier tabouret</option>
+        <option value="restauration">Faire transformer un de mes meubles</option>
+        <option value="autre">Autre question</option>
+      </select></label>
+    <label for="f-msg">Message<textarea id="f-msg" name="message" placeholder="Ex. : je souhaite réserver le fauteuil velours, je passe samedi."></textarea></label>
+    <div><button class="btn" type="submit">Envoyer la demande</button></div>
+    <p class="ok" id="f-ok" hidden>Maquette : à la mise en ligne, ce formulaire enverra la demande à Marie (enregistrement dans un tableau et e-mail automatique).</p>
+  </form>
+</div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>Odymay · Mobilier vintage rénové · Montauban</span>
+  <span class="todo">Mentions légales et politique de confidentialité à compléter (SIRET, hébergeur, responsable de publication)</span>
+</div></footer>
+
+<script>
+document.getElementById('f').addEventListener('submit',e=>{e.preventDefault();document.getElementById('f-ok').hidden=false});
+document.querySelectorAll('[data-sujet]').forEach(a=>a.addEventListener('click',()=>{document.getElementById('f-sujet').value=a.dataset.sujet}));
+</script>
+</body>
+</html>
